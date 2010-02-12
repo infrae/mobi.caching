@@ -6,7 +6,7 @@ class NoCacheBackend(object):
         raise KeyError, 'no cache'
 
     def set(self, key, value, **options):
-        pass
+        return value
 
     def clear(self, key):
         pass

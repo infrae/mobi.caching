@@ -1,22 +1,19 @@
 class Cache(object):
 
-    def __init__(self, backend, prefix=None):
-        if prefix:
-            self.prefix = prefix
+    def __init__(self, backend, namespace=None):
+        if namespace:
+            self.namespace = namespace
         self.backend = backend
 
     def get_key(self, key):
-        if hasattr(self, 'prefix'):
-            return "%s:%s" % (self.prefix, key)
+        if hasattr(self, 'namespace'):
+            return "%s:%s" % (self.namespace, key)
         return key
 
     def cache(self, key, callable_, expire=0):
-        """ cache the 
-        """
         try:
             k = self.get_key(key)
             v = self.backend.get(k)
-            print "cache hit %s" % k
             return v
         except KeyError:
             value = callable_()
@@ -25,4 +22,3 @@ class Cache(object):
 
     def clear(self):
         self.backend.clear()
-
