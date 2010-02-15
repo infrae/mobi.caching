@@ -30,3 +30,10 @@ class DictBackend(object):
 
     def clear(self, key):
         return self.dictionary.clear()
+
+names = {
+    'no-cache': NoCacheBackend,
+    'dict': DictBackend,
+    # 'lru' ...
+    # 'memcache' ...
+}
