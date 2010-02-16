@@ -1,5 +1,6 @@
 _marker = object()
 
+
 class NoCacheBackend(object):
 
     def get(self, key):
@@ -8,12 +9,12 @@ class NoCacheBackend(object):
     def set(self, key, value, **options):
         return value
 
-    def clear(self, key):
+    def clear(self):
         pass
+
 
 class DictBackend(object):
     """ The GIL makes it thread safe
-    but some other implementations may not be thread safe
     """
 
     def __init__(self):
@@ -28,8 +29,9 @@ class DictBackend(object):
     def set(self, key, value, **options):
         self.dictionary[key] = value
 
-    def clear(self, key):
+    def clear(self):
         return self.dictionary.clear()
+
 
 names = {
     'no-cache': NoCacheBackend,

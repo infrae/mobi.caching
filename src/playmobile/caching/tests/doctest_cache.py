@@ -37,6 +37,13 @@
     b called
     'b'
 
+    The cache can be cleared.
+
+    >>> cache_engine.clear()
+    >>> cache('somekey', get_a)
+    a called
+    'a'
+
 """
 
 def get_a():
