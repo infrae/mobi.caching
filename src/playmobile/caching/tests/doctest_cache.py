@@ -19,9 +19,9 @@
     >>> cache('somekey', get_a)
     a called
     'a'
-    >>> cache('somekey', get_b)
-    b called
-    'b'
+    >>> cache('somekey', get_a)
+    a called
+    'a'
 
     If we change the backend to a real cache backend. The callable is cached
 

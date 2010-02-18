@@ -30,3 +30,5 @@ class Cache(object):
 
     def clear(self):
         self.backend.clear()
+
+
