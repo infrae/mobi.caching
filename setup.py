@@ -11,5 +11,7 @@ setup(name='playmobile.caching',
       package_dir={'': 'src'},
       packages=find_packages('src'),
       namespace_packages=['playmobile'],
-      install_requires=[],
+      install_requires=[
+        'repoze.lru',
+      ],
      )

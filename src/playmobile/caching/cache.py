@@ -2,7 +2,7 @@ from playmobile.caching.backend import NoCacheBackend
 
 class Cache(object):
 
-    default_options = {'expire': 0,
+    default_options = {'expires': 0,
         'namespace': None}
 
     def __init__(self, backend=None, **kw):
@@ -17,7 +17,7 @@ class Cache(object):
             return "%s:%s" % (self.options['namespace'], key)
         return key
 
-    def cache(self, key, callable_, expire=None):
+    def cache(self, key, callable_, expires=None):
         try:
             k = self.get_key(key)
             v = self.backend.get(k)
@@ -25,7 +25,7 @@ class Cache(object):
         except KeyError:
             value = callable_()
             self.backend.set(self.get_key(key), value,
-                expire=expire or self.options['expire'])
+                expires=(expires or self.options['expires']))
             return value
 
     def clear(self):

@@ -1,3 +1,5 @@
+from repoze.lru import LRUCache
+
 _marker = object()
 
 
@@ -33,9 +35,21 @@ class DictBackend(object):
         return self.dictionary.clear()
 
 
+class LRUBackend(LRUCache):
+
+    def get(self, key):
+        val = super(LRUBackend, self).get(key, _marker)
+        if val is _marker:
+            raise KeyError
+        return val
+
+    def set(self, key, value, **options):
+        return self.put(key, value)
+
+
 names = {
     'no-cache': NoCacheBackend,
     'dict': DictBackend,
-    # 'lru' ...
-    # 'memcache' ...
+    'lru': LRUBackend,
+    # 'memcache': ...
 }

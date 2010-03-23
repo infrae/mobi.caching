@@ -44,6 +44,19 @@
     a called
     'a'
 
+    A LRU backend is available.
+
+    >>> from playmobile.caching.backend import LRUBackend
+    >>> cache_engine.backend = LRUBackend(8)
+    >>> ignore = [cache(str(i), lambda :i) for i in range(0,10)]
+    >>> cache("2", lambda :"not cached")
+    2
+    >>> cache("9", lambda :"not cached")
+    9
+    >>> cache("1", lambda :"not cached")
+    'not cached'
+
+
 """
 
 def get_a():
