@@ -12,23 +12,24 @@ class Cache(object):
             backend = NoCacheBackend()
         self.backend = backend
 
-    def get_key(self, key):
-        if self.options.has_key('namespace'):
-            return "%s:%s" % (self.options['namespace'], key)
-        return key
-
     def cache(self, key, callable_, expires=None):
         try:
-            k = self.get_key(key)
+            k = self.__get_key(key)
             v = self.backend.get(k)
             return v
         except KeyError:
             value = callable_()
-            self.backend.set(self.get_key(key), value,
+            self.backend.set(self.__get_key(key), value,
                 expires=(expires or self.options['expires']))
             return value
 
     def clear(self):
         self.backend.clear()
+
+    def __get_key(self, key):
+        namespace = self.options.get('namespace')
+        if namespace is not None:
+            return "%s:%s" % (self.options.get('namespace'), key)
+        return key
 
 
