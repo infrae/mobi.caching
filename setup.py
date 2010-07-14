@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-setup(name='playmobile.caching',
+setup(name='mobi.caching',
       version='0.1dev',
       description='Cache utils',
       author='Infrae',
@@ -10,7 +10,7 @@ setup(name='playmobile.caching',
       url='infrae.com',
       package_dir={'': 'src'},
       packages=find_packages('src'),
-      namespace_packages=['playmobile'],
+      namespace_packages=['mobi'],
       install_requires=[
         'repoze.lru',
       ],

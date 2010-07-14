@@ -1,6 +1,6 @@
 """
-    >>> from playmobile.caching import Cache
-    >>> from playmobile.caching.backend import NoCacheBackend, DictBackend
+    >>> from mobi.caching import Cache
+    >>> from mobi.caching.backend import NoCacheBackend, DictBackend
 
     We instantiate a cache engine.
 
@@ -9,7 +9,7 @@
     By default cache backend is no cache.
 
     >>> cache_engine.backend #doctest: +ELLIPSIS
-    <playmobile.caching.backend.NoCacheBackend object at ...>
+    <mobi.caching.backend.NoCacheBackend object at ...>
 
     >>> cache = cache_engine.cache
 
@@ -46,7 +46,7 @@
 
     A LRU backend is available.
 
-    >>> from playmobile.caching.backend import LRUBackend
+    >>> from mobi.caching.backend import LRUBackend
     >>> cache_engine.backend = LRUBackend(8)
     >>> ignore = [cache(str(i), lambda :i) for i in range(0,10)]
     >>> cache("2", lambda :"not cached")

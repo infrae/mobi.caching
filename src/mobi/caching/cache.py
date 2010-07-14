@@ -1,4 +1,4 @@
-from playmobile.caching.backend import NoCacheBackend
+from mobi.caching.backend import NoCacheBackend
 
 class Cache(object):
 
