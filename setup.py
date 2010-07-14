@@ -2,8 +2,10 @@
 
 from setuptools import setup, find_packages
 
+VERSION="1.0b1"
+
 setup(name='mobi.caching',
-      version='0.1dev',
+      version=VERSION,
       description='Cache utils',
       author='Infrae',
       author_email='info@infrae.com',
